@@ -5,18 +5,21 @@ import Restaurant from '../restaurant';
 import Tabs from '../tabs';
 
 const Restaurants = ({ restaurants }) => {
-  const tabs = restaurants.map((restaurant) => ({
-    title: restaurant.name,
-    content: <Restaurant restaurant={restaurant} />,
-  }));
+  const tabs = Object.keys(restaurants).map((rId) => {
+    return {
+      title: restaurants[rId].name,
+      content: <Restaurant restaurant={restaurants[rId]} />,
+    };
+  });
 
   return <Tabs tabs={tabs} />;
 };
 
 Restaurants.propTypes = {
-  restaurants: PropTypes.arrayOf(
+  restaurants: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
 };
