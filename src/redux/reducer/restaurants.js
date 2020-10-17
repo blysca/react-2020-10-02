@@ -1,7 +1,7 @@
 import { normalizedRestaurants } from '../../fixtures';
 
 const defaultRestaurants = normalizedRestaurants.reduce(
-  (acc, product) => ({ ...acc, [product.id]: product }),
+  (acc, restaurant) => ({ ...acc, [restaurant.id]: restaurant }),
   {}
 );
 
